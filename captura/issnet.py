@@ -10,7 +10,7 @@ from selenium.webdriver.support import expected_conditions as EC
 
 from lib.web_undected import make_chrome_browser, wait_for_download
 
-def download_issnet(conteudo: str, save_path):
+def download_link_issnet(conteudo: str, save_path):
     # 1. Extraímos os dois links: o de XML e o de Impressão (Visualização)
     xml_match = re.search(r'https?://[^\s<>"\']+NotaDigitalXmlDownload[^\s<>"\']+', conteudo)
     # Link de visualização/impressão da nota (geralmente contém 'Nota_Digital') 

@@ -10,7 +10,8 @@ from lib.conteudo_email import html2text
 from lib.apagar_email import apagar_email
 
 from captura.giss import download_link_giss
-from captura.issnet import download_issnet
+from captura.issnet import download_link_issnet
+from captura.sao_paulo import download_link_sao_paulo
 
 load_dotenv()
 
@@ -47,8 +48,10 @@ if __name__ == "__main__":
                     print(f"Conteúdo processado: {conteudo}")
                     if "GissOnline" in msg.subject or "giss.com.br" in conteudo:
                         download_link_giss(conteudo, DOWNLOAD_DIR)
-                    if "ISS.NET" in conteudo:
-                        download_issnet(conteudo, DOWNLOAD_DIR)
-                    apagar_email(msg)
+                    elif "ISS.NET" in conteudo:
+                        download_link_issnet(conteudo, DOWNLOAD_DIR)
+                    elif "https://nfe.sf.prefeitura.sp.gov.br/" in conteudo:
+                        download_link_sao_paulo(conteudo, DOWNLOAD_DIR)
+                    # apagar_email(msg)
     except Exception as e:
         print(f"Erro no processamento principal: {e}")

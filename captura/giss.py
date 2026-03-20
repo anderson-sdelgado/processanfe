@@ -22,7 +22,7 @@ def download_link_giss(conteudo: str, save_path):
     cnpj_prestador = cnpj_match.group(1)
     url = link_match.group(0)
 
-    browser = make_chrome_browser("--start-maximized")
+    browser = make_chrome_browser(save_path, "--start-maximized")
     wait = WebDriverWait(browser, 20)
     
     try:
